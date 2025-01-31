@@ -3,11 +3,8 @@ import pandas as pd
 import pickle
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, MinMaxScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.decomposition import PCA
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
+
 
 # Load the trained model
 model = tf.keras.models.load_model('model.h5')

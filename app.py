@@ -52,26 +52,35 @@ def preprocess_input(data, label_encoders, scaler, onehot_encoder):
 # Input form in the center of the page
 st.header('Enter Customer Information')
 
-# Input fields for categorical features
-senior_citizen = st.selectbox('Senior Citizen', ['No', 'Yes'])
-partner = st.selectbox('Partner', ['No', 'Yes'])
-dependents = st.selectbox('Dependents', ['No', 'Yes'])
-multiple_lines = st.selectbox('Multiple Lines', ['No', 'No phone service', 'Yes'])
-internet_service = st.selectbox('Internet Service', ['DSL', 'Fiber optic', 'No'])
-online_security = st.selectbox('Online Security', ['No', 'No internet service', 'Yes'])
-online_backup = st.selectbox('Online Backup', ['No', 'No internet service', 'Yes'])
-device_protection = st.selectbox('Device Protection', ['No', 'No internet service', 'Yes'])
-tech_support = st.selectbox('Tech Support', ['No', 'No internet service', 'Yes'])
-streaming_tv = st.selectbox('Streaming TV', ['No', 'No internet service', 'Yes'])
-streaming_movies = st.selectbox('Streaming Movies', ['No', 'No internet service', 'Yes'])
-contract = st.selectbox('Contract', ['Month-to-month', 'One year', 'Two year'])
-paperless_billing = st.selectbox('Paperless Billing', ['No', 'Yes'])
-payment_method = st.selectbox('Payment Method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)', 'Credit card (automatic)'])
+# Create four columns for input fields
+col1, col2, col3, col4 = st.columns(4)
 
-# Input fields for numerical features using sliders
-tenure = st.slider('Tenure', min_value=0, max_value=72, step=1)
-monthly_charges = st.slider('Monthly Charges', min_value=0.0, max_value=200.0, step=0.01)
-total_charges = st.slider('Total Charges', min_value=0.0, max_value=10000.0, step=0.01)
+with col1:
+    senior_citizen = st.selectbox('Senior Citizen', ['No', 'Yes'])
+    partner = st.selectbox('Partner', ['No', 'Yes'])
+    multiple_lines = st.selectbox('Multiple Lines', ['No', 'No phone service', 'Yes'])
+    online_security = st.selectbox('Online Security', ['No', 'No internet service', 'Yes'])
+    device_protection = st.selectbox('Device Protection', ['No', 'No internet service', 'Yes'])
+
+
+with col2:
+    dependents = st.selectbox('Dependents', ['No', 'Yes'])
+    internet_service = st.selectbox('Internet Service', ['DSL', 'Fiber optic', 'No'])
+    online_backup = st.selectbox('Online Backup', ['No', 'No internet service', 'Yes'])
+    tech_support = st.selectbox('Tech Support', ['No', 'No internet service', 'Yes'])
+    streaming_movies = st.selectbox('Streaming Movies', ['No', 'No internet service', 'Yes'])
+
+
+with col3:
+    paperless_billing = st.selectbox('Paperless Billing', ['No', 'Yes'])
+    payment_method = st.selectbox('Payment Method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)', 'Credit card (automatic)'])
+    streaming_tv = st.selectbox('Streaming TV', ['No', 'No internet service', 'Yes'])
+    contract = st.selectbox('Contract', ['Month-to-month', 'One year', 'Two year'])
+    
+with col4:
+    monthly_charges = st.slider('Monthly Charges', min_value=0.0, max_value=200.0, step=0.01)
+    tenure = st.slider('Tenure', min_value=0, max_value=72, step=1)
+    total_charges = st.slider('Total Charges', min_value=0.0, max_value=10000.0, step=0.01)
 
 # Button to submit the input data
 if st.button('Enter Data'):
